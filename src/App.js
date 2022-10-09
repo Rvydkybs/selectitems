@@ -73,7 +73,7 @@ function ItemList({ todo, index, markTodo, removeTodo }) {
         </div>
       </div>
       <div className="button">
-        <Button onClick={() => markAll(index)}>Select All ✓</Button>
+        <Button onClick={() => {}}>Select All ✓</Button>
       </div>
     </div>
   );
@@ -96,16 +96,20 @@ function SelectedItems({ addTodo }) {
         {itemList &&
           itemList.map((item) => {
             return (
-              <div className="d-flex align-items-center selectedItems">
-                <img
-                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                  alt=""
-                  style={{ width: "45px", height: "45px" }}
-                  className="rounded-circle"
-                />
-                <div className="ms-3">
-                  <p className="fw-bold mb-1">{item.name} </p>
-                  <Button variant="outline-danger">✕</Button>
+              <div className="d-flex align-items-center selectedItems justify-content-between">
+                <div className="d-flex align-items-center justify-content-center">
+                  <img
+                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    alt=""
+                    style={{ width: "45px", height: "45px", marginRight: 16 }}
+                    className="rounded-circle"
+                  />
+                  <p className="fw-bold mb-1">{item.name}</p>
+                </div>
+                <div className="col-2 ms-3">
+                  <div>
+                    <Button variant="outline-danger">✕</Button>
+                  </div>
                 </div>
               </div>
             );
@@ -113,9 +117,7 @@ function SelectedItems({ addTodo }) {
       </div>
       <div>
         <div className="button">
-          <Button variant="outline-success" onClick={() => {}}>
-            Clear
-          </Button>
+          <Button onClick={() => {}}>Clear </Button>
         </div>
       </div>
     </div>
