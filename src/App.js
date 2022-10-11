@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { MDBBadge, MDBListGroup, MDBListGroupItem } from "mdb-react-ui-kit";
 
 import "./styles.css";
 const itemList = [
@@ -16,9 +15,6 @@ function App() {
   const [newItemList, setNewItemList] = useState(itemList);
   const [isItemSelect, setIsITemSelect] = useState(true);
   const [isItemDeleted, setIsITemDeleted] = useState(true);
-  // useEffect(() => {
-  //   setNewItemList(itemList);
-  // }, []);
 
   useEffect(() => {
     <ItemList />;
@@ -28,16 +24,12 @@ function App() {
   useEffect(() => {
     <ItemList />;
     <SelectedItems />;
-
-    console.log("newItemList 2", newItemList, selectedItemList);
   }, [isItemDeleted]);
 
   const selectItem = (item) => {
     const index = newItemList.indexOf(item);
 
-    console.log("index:", index);
     if (index >= -1) {
-      //silme işlemi bir kez yaptıktan sonra tekrar deneyince çoklu siliyor-aynı indexe sahip birden fazla eleman mı var?-varsa neden elemanların indexleri aynı?
       console.log("first");
       newItemList.splice(index, 1);
       setNewItemList(newItemList);
@@ -76,7 +68,6 @@ function App() {
     setSelectedItemList([]);
   };
   function ItemList() {
-    console.log("newItemList", newItemList);
     return (
       <div className="itemListContainer">
         <h4 className="headers">Item List</h4>
@@ -128,7 +119,6 @@ function App() {
   }
 
   function SelectedItems() {
-    console.log("SelectedItemList", selectedItemList);
     return (
       <div className="selectedItemsContainer">
         <h4 className="headers">Selected Items</h4>
@@ -167,7 +157,7 @@ function App() {
                 clearHandler(selectedItemList);
               }}
             >
-              Clear{" "}
+              Clear
             </Button>
           </div>
         </div>
@@ -176,7 +166,13 @@ function App() {
   }
 
   return (
-    <div style={{ flexDirection: "column", flex: "1", columns: "2" }}>
+    <div
+      style={{
+        flexDirection: "column",
+        flex: "1",
+        columns: "2",
+      }}
+    >
       <ItemList />
       <SelectedItems />
     </div>
